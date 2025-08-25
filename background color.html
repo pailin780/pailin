@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เปลี่ยนสีพื้นหลัง</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: all 0.8s ease;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .color-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            min-width: 120px;
+        }
+
+        .red-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        }
+
+        .red-btn:hover {
+            background: linear-gradient(45deg, #ff5252, #d32f2f);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .green-btn {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        }
+
+        .green-btn:hover {
+            background: linear-gradient(45deg, #26a69a, #00695c);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+        }
+
+        .blue-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .blue-btn:hover {
+            background: linear-gradient(45deg, #5a67d8, #6b46c1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .color-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .current-color {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .current-color-text {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .current-color-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .instructions-text {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes colorChange {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .color-change-animation {
+            animation: colorChange 0.5s ease-in-out;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .color-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">🎨</div>
+            <h1 class="title">เปลี่ยนสีพื้นหลัง</h1>
+            <p class="subtitle">คลิกปุ่มเพื่อเปลี่ยนสีพื้นหลัง</p>
+        </div>
+        
+        <div class="button-container">
+            <button class="color-btn red-btn" id="redBtn">
+                🔴 แดง
+            </button>
+            <button class="color-btn green-btn" id="greenBtn">
+                🟢 เขียว
+            </button>
+            <button class="color-btn blue-btn" id="blueBtn">
+                🔵 น้ำเงิน
+            </button>
+        </div>
+        
+        <div class="current-color" id="currentColor">
+            <div class="current-color-text">สีพื้นหลังปัจจุบัน:</div>
+            <div class="current-color-value" id="currentColorValue">น้ำเงิน-ม่วง (เริ่มต้น)</div>
+        </div>
+        
+        <div class="instructions">
+            <div class="instructions-text">
+                💡 <strong>วิธีใช้:</strong> คลิกปุ่มสีที่ต้องการเพื่อเปลี่ยนสีพื้นหลังของหน้าเว็บ<br>
+                สีจะเปลี่ยนแบบค่อยๆ เปลี่ยนเพื่อให้ดูสวยงาม
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // รับ elements ที่ต้องใช้
+        const redBtn = document.getElementById('redBtn');
+        const greenBtn = document.getElementById('greenBtn');
+        const blueBtn = document.getElementById('blueBtn');
+        const currentColorValue = document.getElementById('currentColorValue');
+        const container = document.querySelector('.container');
+        const body = document.body;
+
+        // ฟังก์ชันเปลี่ยนสีพื้นหลัง
+        function changeBackgroundColor(color, colorName, gradient) {
+            // เปลี่ยนสีพื้นหลัง
+            body.style.background = gradient;
+            
+            // อัพเดทข้อความสีปัจจุบัน
+            currentColorValue.textContent = colorName;
+            
+            // เพิ่ม animation
+            container.classList.add('color-change-animation');
+            
+            // ลบ animation หลังจากเสร็จสิ้น
+            setTimeout(() => {
+                container.classList.remove('color-change-animation');
+            }, 500);
+            
+            console.log(`เปลี่ยนสีพื้นหลังเป็น: ${colorName}`);
+        }
+
+        // Event Listeners สำหรับปุ่มแดง
+        redBtn.addEventListener('click', function() {
+            changeBackgroundColor(
+                'red', 
+                'แดง', 
+                'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 50%, #ff5252 100%)'
+            );
+        });
+
+        // Event Listeners สำหรับปุ่มเขียว
+        greenBtn.addEventListener('click', function() {
+            changeBackgroundColor(
+                'green', 
+                'เขียว', 
+                'linear-gradient(135deg, #4ecdc4 0%, #44a08d 50%, #26a69a 100%)'
+            );
+        });
+
+        // Event Listeners สำหรับปุ่มน้ำเงิน
+        blueBtn.addEventListener('click', function() {
+            changeBackgroundColor(
+                'blue', 
+                'น้ำเงิน', 
+                'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #5a67d8 100%)'
+            );
+        });
+
+        // เพิ่ม Event Listeners สำหรับ keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case '1':
+                    redBtn.click();
+                    break;
+                case '2':
+                    greenBtn.click();
+                    break;
+                case '3':
+                    blueBtn.click();
+                    break;
+            }
+        });
+
+        // เพิ่มเอฟเฟกต์เสียงเมื่อคลิก (ถ้าต้องการ)
+        function addClickEffect(button) {
+            button.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(-1px) scale(0.98)';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-3px) scale(1)';
+            });
+        }
+
+        // เพิ่มเอฟเฟกต์ให้ทุกปุ่ม
+        addClickEffect(redBtn);
+        addClickEffect(greenBtn);
+        addClickEffect(blueBtn);
+
+        // แสดงข้อความต้อนรับ
+        console.log('🎨 Background Color Changer พร้อมใช้งาน!');
+        console.log('💡 เคล็ดลับ: คุณสามารถใช้ปุ่ม 1, 2, 3 บนคีย์บอร์ดเพื่อเปลี่ยนสีได้ด้วย!');
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9748235665ff4f51',t:'MTc1NjA5Mzk2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

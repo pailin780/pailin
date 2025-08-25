@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เครื่องคิดเลขบวกเลข</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .calculator-header {
+            margin-bottom: 30px;
+        }
+
+        .calculator-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .number-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .number-input:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .plus-sign {
+            font-size: 30px;
+            color: #ff6b9d;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6b9d, #f093fb);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            margin: 20px 0;
+        }
+
+        .calculate-btn:hover {
+            background: linear-gradient(45deg, #e91e63, #ec407a);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #ff6b9d;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-text {
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+
+        .result-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 16px;
+            margin-top: 10px;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .calculator-container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calculator-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .calculator-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <div class="icon">🧮</div>
+            <h1 class="calculator-title">เครื่องคิดเลข</h1>
+            <p class="calculator-subtitle">บวกเลข 2 จำนวน</p>
+        </div>
+        
+        <div class="input-group">
+            <label for="number1" class="input-label">ตัวเลขที่ 1</label>
+            <input 
+                type="number" 
+                id="number1" 
+                class="number-input" 
+                placeholder="กรอกตัวเลขที่ 1"
+                step="any"
+            >
+        </div>
+        
+        <div class="plus-sign">+</div>
+        
+        <div class="input-group">
+            <label for="number2" class="input-label">ตัวเลขที่ 2</label>
+            <input 
+                type="number" 
+                id="number2" 
+                class="number-input" 
+                placeholder="กรอกตัวเลขที่ 2"
+                step="any"
+            >
+        </div>
+        
+        <button onclick="calculateSum()" class="calculate-btn">
+            🔢 คำนวณ
+        </button>
+        
+        <div class="result-section" id="resultSection">
+            <div class="result-text">ผลลัพธ์จะแสดงที่นี่</div>
+        </div>
+    </div>
+
+    <script>
+        function calculateSum() {
+            // รับค่าจาก input
+            const number1 = document.getElementById('number1').value;
+            const number2 = document.getElementById('number2').value;
+            const resultSection = document.getElementById('resultSection');
+            
+            // ตรวจสอบว่ากรอกข้อมูลครบหรือไม่
+            if (number1 === '' || number2 === '') {
+                resultSection.innerHTML = '<div class="error-message">❌ กรุณากรอกตัวเลขให้ครบทั้ง 2 ช่อง</div>';
+                return;
+            }
+            
+            // แปลงเป็นตัวเลข
+            const num1 = parseFloat(number1);
+            const num2 = parseFloat(number2);
+            
+            // ตรวจสอบว่าเป็นตัวเลขที่ถูกต้องหรือไม่
+            if (isNaN(num1) || isNaN(num2)) {
+                resultSection.innerHTML = '<div class="error-message">❌ กรุณากรอกตัวเลขที่ถูกต้อง</div>';
+                return;
+            }
+            
+            // คำนวณผลรวม
+            const sum = num1 + num2;
+            
+            // แสดงผลลัพธ์
+            resultSection.innerHTML = `
+                <div>
+                    <div class="result-text">${num1} + ${num2} =</div>
+                    <div class="result-value">✨ ${sum}</div>
+                </div>
+            `;
+        }
+        
+        // เพิ่มการทำงานเมื่อกด Enter
+        document.getElementById('number1').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('number2').focus();
+            }
+        });
+        
+        document.getElementById('number2').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculateSum();
+            }
+        });
+        
+        // เคลียร์ผลลัพธ์เมื่อเปลี่ยนค่า input
+        document.getElementById('number1').addEventListener('input', clearResult);
+        document.getElementById('number2').addEventListener('input', clearResult);
+        
+        function clearResult() {
+            const resultSection = document.getElementById('resultSection');
+            resultSection.innerHTML = '<div class="result-text">ผลลัพธ์จะแสดงที่นี่</div>';
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97481e67446e4f51',t:'MTc1NjA5Mzc1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

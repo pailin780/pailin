@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="c:\xampp\htdocs\pailin\โปรไฟล์.HEIC">
+    <title>โปรไฟล์ส่วนตัว</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 4px solid white;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #5a67d8, #6b46c1);
+        }
+
+        .social-link.facebook {
+            background: linear-gradient(45deg, #1877f2, #42a5f5);
+        }
+
+        .social-link.facebook:hover {
+            background: linear-gradient(45deg, #166fe5, #1976d2);
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #e1306c, #fd1d1d, #fccc63);
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .info-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .info-value {
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 480px) {
+            .profile-container {
+                padding: 30px 20px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-image">
+            <img src="c:\Users\hp\Downloads\1223.jpg" alt="รูปโปรไฟล์" onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🎓';">
+        </div>
+        
+        <h1 class="name">ไพลิน นามขันคุณ</h1>
+        <p class="subtitle">วิทยาลัยเทคนิคสว่างแดนดิน</p>
+        
+        <div class="info-section">
+            <div class="info-item">
+                <span class="info-label">รหัสนักศึกษา:</span>
+                <span class="info-value">67319010052</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">ชั้นปี:</span>
+                <span class="info-value">ปี ปวส.2/1</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">สาขา:</span>
+                <span class="info-value">เทคโ</span>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://facebook.com/yourprofile" class="social-link facebook" target="_blank">
+                📘 Facebook
+            </a>
+            <a href="https://instagram.com/yourprofile" class="social-link instagram" target="_blank">
+                📷 Instagram
+            </a>
+        </div>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9747d804f0477335',t:'MTc1NjA5MDg3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนูอาหาร</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            max-width: 300px;
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .food-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 4px solid white;
+            overflow: hidden;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .menu-item:hover .food-image {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .food-description {
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .food-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e74c3c;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .menu-item.pad-thai {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 255, 255, 0.95));
+        }
+
+        .menu-item.pad-thai .food-image {
+            background: linear-gradient(45deg, #ffc107, #ff8f00);
+        }
+
+        .menu-item.som-tam {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(255, 255, 255, 0.95));
+        }
+
+        .menu-item.som-tam .food-image {
+            background: linear-gradient(45deg, #4caf50, #2e7d32);
+        }
+
+        .menu-item.tom-yum {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(255, 255, 255, 0.95));
+        }
+
+        .menu-item.tom-yum .food-image {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        @media (max-width: 768px) {
+            .menu-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu-item {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🍽️ อาหารไทยร้านพะริน</h1>
+            <p class="subtitle">เมนูอาหารไทยแสนอร่อย รสชาติต้นตำรับ</p>
+        </div>
+        
+        <div class="menu-container">
+            <div class="menu-item pad-thai">
+                <div class="food-image">
+                    <img src="c:\Users\hp\Downloads\1456.jpg" alt="ผัดไทย" onerror="this.style.display='none'; this.parentElement.innerHTML='🍜';">
+                </div>
+                <h3 class="food-name">ผัดไทย</h3>
+                <p class="food-description">เส้นจันท์ผัดกับกุ้งสด ถั่วงอก หัวไชโป๊ว และเครื่องปรุงรสต้นตำรับ</p>
+                <div class="food-price">฿120</div>
+            </div>
+            
+            <div class="menu-item som-tam">
+                <div class="food-image">
+                    <img src="c:\Users\hp\Downloads\258.webp" alt="ส้มตำ" onerror="this.style.display='none'; this.parentElement.innerHTML='🥗';">
+                </div>
+                <h3 class="food-name">ส้มตำ</h3>
+                <p class="food-description">มะละกอดิบหั่นฝอย ปรุงรสเปรี้ยว หวาน เค็ม เผ็ด ตามแบบอีสาน</p>
+                <div class="food-price">฿80</div>
+            </div>
+            
+            <div class="menu-item tom-yum">
+                <div class="food-image">
+                    <img src="c:\Users\hp\Downloads\eBook_tomyam_Page_09.jpg" alt="ต้มยำกุ้ง" onerror="this.style.display='none'; this.parentElement.innerHTML='🍲';">
+                </div>
+                <h3 class="food-name">ต้มยำกุ้ง</h3>
+                <p class="food-description">น้ำซุปใส รสเปรี้ยวเผ็ด กุ้งสดใหญ่ เห็ดฟาง ใบมะกรูด</p>
+                <div class="food-price">฿150</div>
+            </div>
+        </div>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97480432f76574d4',t:'MTc1NjA5MjY4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
